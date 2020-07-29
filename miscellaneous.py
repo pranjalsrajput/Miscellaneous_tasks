@@ -66,3 +66,16 @@ def mergePDFS():
     merger.write(tmp)
     PyPDF2.filters.compress(tmp.getvalue())
     merger.write(open("test_out2.pdf", 'wb'))
+
+def convertXLToJson():
+    import pandas
+    import json
+
+    excel_data_fragment = pandas.read_excel('./Final_Timeline.xlsx')
+    json_str = excel_data_fragment.to_json(orient='records')
+    #print('Excel Sheet to JSON:\n', json_str)
+    with open('Final_Timeline.json', 'w') as f:
+        json.dump(json_str, f)
+
+if __name__ == "__main__":
+    convertXLToJson()
