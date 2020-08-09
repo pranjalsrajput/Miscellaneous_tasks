@@ -77,5 +77,15 @@ def convertXLToJson():
     with open('Final_Timeline.json', 'w') as f:
         json.dump(json_str, f)
 
+def rotate_img(img_path, rt_degr):
+    from PIL import Image
+    img = Image.open(img_path)
+    return img.rotate(rt_degr, expand=1)
+
 if __name__ == "__main__":
     convertXLToJson()
+    ##### Image rotation #####
+    # path_to_images = '/home/pranjal/Documents/PythonProjects/SampleDataset/2_card_nearby_Location_10/Frames/VID_20191013_104456_2/'
+    # for filename in glob.glob(os.path.join(path_to_images, '*.jpg')):
+    #     img_rt_90 = rotate_img(filename, 180)
+    #     img_rt_90.save(filename)
